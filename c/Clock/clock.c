@@ -29,8 +29,8 @@ const int pinNumFour = 23;
 const int pinNumFive = 24;
 const int pinNumSix = 25;
 
-const int[6] arrayNums = new int[]{pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-const int[8] arrayLeds = new int[]{
+const int[] arrayNums = new int[]{pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
+const int[] arrayLeds = new int[]{
     pinA,
     pinB,
     pinC,

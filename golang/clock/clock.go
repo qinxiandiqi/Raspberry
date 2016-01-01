@@ -75,7 +75,7 @@ func main() {
 				currentNum = hour % 10
 			case lightThree:
 				currentNum = min / 10
-			case lightFive:
+			case lightFour:
 				currentNum = min % 10
 			case lightFive:
 				currentNum = sec / 10

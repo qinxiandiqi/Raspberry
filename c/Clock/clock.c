@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define TRUE = 1
+#define FALSE = 0
+
 const int HIGH_MODE = 1;
 const int LOW_MODE = 0;
 
@@ -29,43 +32,35 @@ const int pinNumFour = 23;
 const int pinNumFive = 24;
 const int pinNumSix = 25;
 
-int[6] arrayNums = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-int[8] arrayLeds = {
-    pinA,
-    pinB,
-    pinC,
-    pinD,
-    pinE,
-    pinF,
-    pinG,
-    pinDF
-};
+const int arrayNums[6] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
+const int arrayLeds[8] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
 
 int hour, min, sec;
 time_t currentTimeSec;
 struct tm * currentTime;
+int index;
 
 int main(){
     if(wiringPiSetupGpio() == -1){
-        printf("Setup wiringPi failed!");
+        printf("Setup wiringPi failed!\n");
         return 1;
     }
-    printf("init all pin mode...");
-    for(int i = 0; i < arrayNums.length; i ++){
-        pinMode(arrayNums[i], OUTPUT);
+    printf("init all pin mode...\n");
+    for(index = 0; index < arrayNums.length; index ++){
+        pinMode(arrayNums[index], OUTPUT);
     }
-    for(int i = 0; i < arrayLeds.length; i ++){
-        pinMode(arrayLeds[i], OUTPUT);
+    for(i = 0; i < arrayLeds.length; i ++){
+        pinMode(arrayLeds[index], OUTPUT);
     }
-    
-    printf("start timer...");
-    while(TRUE){
+
+    printf("start timer...\n");
+    while(true){
         currentTimeSec = time(NULL);
         currentTime = localtime(&currentTimeSec);
         hour = currentTime->tm_hour;
         min = currentTime->tm_min;
         sec = currentTime->tm_sec;
-        
+
         lightNumber(numOne, hour/10);
         delay(2);
         lightNumber(numTwo, hour%10);
@@ -83,8 +78,8 @@ int main(){
 }
 
 void lightNumber(int light, int number){
-    for(int i = 0; i < arrayNums.length; i ++){
-        digitalWrite(arrayNums[i], LOW_MODE);
+    for(int index = 0; index < arrayNums.length; index ++){
+        digitalWrite(arrayNums[index], LOW_MODE);
     }
     digitalWrite(pinDF, HIGH_MODE);
     switch (number) {
@@ -183,5 +178,5 @@ void lightNumber(int light, int number){
         digitalWrite(pinDF, LOW_MODE);
     }
     digitalWrite(arrayNums[light], HIGH_MODE);
-    printf("lingt the %d light with value %d.", light + 1, number);
+    printf("lingt the %d light with value %d.\n", light + 1, number);
 }

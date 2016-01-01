@@ -9,34 +9,34 @@
 #define HIGH_MODE 1
 #define LOW_MODE 0
 
-#define numOne 0
-#define numTwo 1
-#define numThree 2
-#define numFour 3
-#define numFive 4
-#define numSix 5
+#define LIGHT_NUM_ONE 0
+#define LIGHT_NUM_TWO 1
+#define LIGHT_NUM_THREE 2
+#define LIGHT_NUM_FOUR 3
+#define LIGHT_NUM_FIVE 4
+#define LIGHT_NUM_SIX 5
 
-#define pinA 2
-#define pinB 3
-#define pinC 4
-#define pinD 17
-#define pinE 27
-#define pinF 22
-#define pinG 10
-#define pinDF 9
+#define PIN_A 2
+#define PIN_B 3
+#define PIN_C 4
+#define PIN_D 17
+#define PIN_E 27
+#define PIN_F 22
+#define PIN_G 10
+#define PIN_DF 9
 
-#define pinNumOne 14
-#define pinNumTwo 15
-#define pinNumThree 18
-#define pinNumFour 23
-#define pinNumFive 24
-#define pinNumSix 25
+#define PIN_NUM_ONE 14
+#define PIN_NUM_TWO 15
+#define PIN_NUM_THREE 18
+#define PIN_NUM_FOUR 23
+#define PIN_NUM_FIVE 24
+#define PIN_NUM_SIX 25
 
-#define arrayNumCount 6
-#define arrayLedCount 8
+#define TOTAL_COUNT_OF_NUMS 6
+#define TOTAL_PIN_COUNT_OF_LED 8
 
-const int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-const int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
+const int arrayNums[TOTAL_COUNT_OF_NUMS] = {PIN_NUM_ONE, PIN_NUM_TWO, PIN_NUM_THREE, PIN_NUM_FOUR, PIN_NUM_FIVE, PIN_NUM_SIX};
+const int arrayLeds[TOTAL_PIN_COUNT_OF_LED] = {PIN_A, PIN_B, PIN_C, PIN_D, PIN_E, PIN_F, PIN_G, PIN_DF};
 
 int hour, min, sec;
 time_t currentTimeSec;
@@ -44,107 +44,106 @@ struct tm * currentTime;
 int position = 0;
 
 void lightNumber(int light, int number){
-    for(position = 0; position < arrayNumCount; position ++){
+    for(position = 0; position < TOTAL_COUNT_OF_NUMS; position ++){
         digitalWrite(arrayNums[position], LOW_MODE);
     }
-    digitalWrite(pinDF, HIGH_MODE);
+    digitalWrite(PIN_DF, HIGH_MODE);
     switch (number) {
         case 0:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, LOW_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, HIGH_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, LOW_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, HIGH_MODE);
             break;
         case 1:
-            digitalWrite(pinA, HIGH_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, HIGH_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, HIGH_MODE);
-            digitalWrite(pinG, HIGH_MODE);
+            digitalWrite(PIN_A, HIGH_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, HIGH_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, HIGH_MODE);
+            digitalWrite(PIN_G, HIGH_MODE);
             break;
         case 2:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, HIGH_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, LOW_MODE);
-            digitalWrite(pinF, HIGH_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, HIGH_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, LOW_MODE);
+            digitalWrite(PIN_F, HIGH_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 3:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, HIGH_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, HIGH_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 4:
-            digitalWrite(pinA, HIGH_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, HIGH_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, HIGH_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, HIGH_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 5:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, HIGH_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, HIGH_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 6:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, HIGH_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, LOW_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, HIGH_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, LOW_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 7:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, HIGH_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, HIGH_MODE);
-            digitalWrite(pinG, HIGH_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, HIGH_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, HIGH_MODE);
+            digitalWrite(PIN_G, HIGH_MODE);
             break;
         case 8:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, LOW_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, LOW_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
         case 9:
-            digitalWrite(pinA, LOW_MODE);
-            digitalWrite(pinB, LOW_MODE);
-            digitalWrite(pinC, LOW_MODE);
-            digitalWrite(pinD, LOW_MODE);
-            digitalWrite(pinE, HIGH_MODE);
-            digitalWrite(pinF, LOW_MODE);
-            digitalWrite(pinG, LOW_MODE);
+            digitalWrite(PIN_A, LOW_MODE);
+            digitalWrite(PIN_B, LOW_MODE);
+            digitalWrite(PIN_C, LOW_MODE);
+            digitalWrite(PIN_D, LOW_MODE);
+            digitalWrite(PIN_E, HIGH_MODE);
+            digitalWrite(PIN_F, LOW_MODE);
+            digitalWrite(PIN_G, LOW_MODE);
             break;
     }
-    if (light == numFour) {
-        digitalWrite(pinDF, LOW_MODE);
+    if (light == LIGHT_NUM_FOUR) {
+        digitalWrite(PIN_DF, LOW_MODE);
     }
     digitalWrite(arrayNums[light], HIGH_MODE);
-    printf("lingt the %d light with value %d.\n", light + 1, number);
 }
 
 int main(){
@@ -153,10 +152,10 @@ int main(){
         return 1;
     }
     printf("init all pin mode...\n");
-    for(position = 0; position < arrayNumCount; position ++){
+    for(position = 0; position < TOTAL_COUNT_OF_NUMS; position ++){
         pinMode(arrayNums[position], OUTPUT);
     }
-    for(position = 0; position < arrayLedCount; position ++){
+    for(position = 0; position < TOTAL_PIN_COUNT_OF_LED; position ++){
         pinMode(arrayLeds[position], OUTPUT);
     }
 
@@ -168,17 +167,17 @@ int main(){
         min = currentTime->tm_min;
         sec = currentTime->tm_sec;
 
-        lightNumber(numOne, hour/10);
+        lightNumber(LIGHT_NUM_ONE, hour/10);
         delay(2);
-        lightNumber(numTwo, hour%10);
+        lightNumber(LIGHT_NUM_TWO, hour%10);
         delay(2);
-        lightNumber(numThree, min/10);
+        lightNumber(LIGHT_NUM_THREE, min/10);
         delay(2);
-        lightNumber(numFour, min%10);
+        lightNumber(LIGHT_NUM_FOUR, min%10);
         delay(2);
-        lightNumber(numFive, sec/10);
+        lightNumber(LIGHT_NUM_FIVE, sec/10);
         delay(2);
-        lightNumber(numSix, sec%10);
+        lightNumber(LIGHT_NUM_SIX, sec%10);
         delay(2);
     }
     return 0;

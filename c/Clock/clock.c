@@ -26,14 +26,17 @@ const int pinG = 10;
 const int pinDF = 9;
 
 const int pinNumOne = 14;
-const int pinNUmTwo = 15;
+const int pinNumTwo = 15;
 const int pinNumThree = 18;
 const int pinNumFour = 23;
 const int pinNumFive = 24;
 const int pinNumSix = 25;
 
-const int arrayNums[6] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-const int arrayLeds[8] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
+const int arrayNumCount = 6;
+const int arrayLedCount = 8;
+
+const int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
+const int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
 
 int hour, min, sec;
 time_t currentTimeSec;
@@ -46,15 +49,15 @@ int main(){
         return 1;
     }
     printf("init all pin mode...\n");
-    for(index = 0; index < arrayNums.length; index ++){
+    for(index = 0; index < arrayNumCount; index ++){
         pinMode(arrayNums[index], OUTPUT);
     }
-    for(i = 0; i < arrayLeds.length; i ++){
+    for(index = 0; index < arrayLedCount; index ++){
         pinMode(arrayLeds[index], OUTPUT);
     }
 
     printf("start timer...\n");
-    while(true){
+    while(TRUE){
         currentTimeSec = time(NULL);
         currentTime = localtime(&currentTimeSec);
         hour = currentTime->tm_hour;
@@ -78,7 +81,7 @@ int main(){
 }
 
 void lightNumber(int light, int number){
-    for(int index = 0; index < arrayNums.length; index ++){
+    for(index = 0; index < arrayNumCount; index ++){
         digitalWrite(arrayNums[index], LOW_MODE);
     }
     digitalWrite(pinDF, HIGH_MODE);

@@ -6,34 +6,34 @@
 #define TRUE = 1
 #define FALSE = 0
 
-const int HIGH_MODE = 1;
-const int LOW_MODE = 0;
+#define HIGH_MODE = 1;
+#define LOW_MODE = 0;
 
-const int numOne = 0;
-const int numTwo = 1;
-const int numThree = 2;
-const int numFour = 3;
-const int numFive = 4;
-const int numSix = 5;
+#define numOne = 0;
+#define numTwo = 1;
+#define numThree = 2;
+#define numFour = 3;
+#define numFive = 4;
+#define numSix = 5;
 
-const int pinA = 2;
-const int pinB = 3;
-const int pinC = 4;
-const int pinD = 17;
-const int pinE = 27;
-const int pinF = 22;
-const int pinG = 10;
-const int pinDF = 9;
+#define pinA = 2;
+#define pinB = 3;
+#define pinC = 4;
+#define pinD = 17;
+#define pinE = 27;
+#define pinF = 22;
+#define pinG = 10;
+#define pinDF = 9;
 
-const int pinNumOne = 14;
-const int pinNumTwo = 15;
-const int pinNumThree = 18;
-const int pinNumFour = 23;
-const int pinNumFive = 24;
-const int pinNumSix = 25;
+#define pinNumOne = 14;
+#define pinNumTwo = 15;
+#define pinNumThree = 18;
+#define pinNumFour = 23;
+#define pinNumFive = 24;
+#define pinNumSix = 25;
 
-const int arrayNumCount = 6;
-const int arrayLedCount = 8;
+#define arrayNumCount = 6;
+#define arrayLedCount = 8;
 
 const int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
 const int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
@@ -42,43 +42,6 @@ int hour, min, sec;
 time_t currentTimeSec;
 struct tm * currentTime;
 int index;
-
-int main(){
-    if(wiringPiSetupGpio() == -1){
-        printf("Setup wiringPi failed!\n");
-        return 1;
-    }
-    printf("init all pin mode...\n");
-    for(index = 0; index < arrayNumCount; index ++){
-        pinMode(arrayNums[index], OUTPUT);
-    }
-    for(index = 0; index < arrayLedCount; index ++){
-        pinMode(arrayLeds[index], OUTPUT);
-    }
-
-    printf("start timer...\n");
-    while(TRUE){
-        currentTimeSec = time(NULL);
-        currentTime = localtime(&currentTimeSec);
-        hour = currentTime->tm_hour;
-        min = currentTime->tm_min;
-        sec = currentTime->tm_sec;
-
-        lightNumber(numOne, hour/10);
-        delay(2);
-        lightNumber(numTwo, hour%10);
-        delay(2);
-        lightNumber(numThree, min/10);
-        delay(2);
-        lightNumber(numFour, min%10);
-        delay(2);
-        lightNumber(numFive, sec/10);
-        delay(2);
-        lightNumber(numSix, sec%10);
-        delay(2);
-    }
-    return 0;
-}
 
 void lightNumber(int light, int number){
     for(index = 0; index < arrayNumCount; index ++){
@@ -183,3 +146,42 @@ void lightNumber(int light, int number){
     digitalWrite(arrayNums[light], HIGH_MODE);
     printf("lingt the %d light with value %d.\n", light + 1, number);
 }
+
+int main(){
+    if(wiringPiSetupGpio() == -1){
+        printf("Setup wiringPi failed!\n");
+        return 1;
+    }
+    printf("init all pin mode...\n");
+    for(index = 0; index < arrayNumCount; index ++){
+        pinMode(arrayNums[index], OUTPUT);
+    }
+    for(index = 0; index < arrayLedCount; index ++){
+        pinMode(arrayLeds[index], OUTPUT);
+    }
+
+    printf("start timer...\n");
+    while(TRUE){
+        currentTimeSec = time(NULL);
+        currentTime = localtime(&currentTimeSec);
+        hour = currentTime->tm_hour;
+        min = currentTime->tm_min;
+        sec = currentTime->tm_sec;
+
+        lightNumber(numOne, hour/10);
+        delay(2);
+        lightNumber(numTwo, hour%10);
+        delay(2);
+        lightNumber(numThree, min/10);
+        delay(2);
+        lightNumber(numFour, min%10);
+        delay(2);
+        lightNumber(numFive, sec/10);
+        delay(2);
+        lightNumber(numSix, sec%10);
+        delay(2);
+    }
+    return 0;
+}
+
+

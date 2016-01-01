@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	lightOne
+	lightOne = iota
 	lightTwo
 	lightThree
 	lightFour

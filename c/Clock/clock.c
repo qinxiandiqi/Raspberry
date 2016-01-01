@@ -35,13 +35,13 @@
 #define arrayNumCount = 6;
 #define arrayLedCount = 8;
 
-const int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-const int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
+int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
+int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
 
 int hour, min, sec;
 time_t currentTimeSec;
 struct tm * currentTime;
-int index;
+int index = 0;
 
 void lightNumber(int light, int number){
     for(index = 0; index < arrayNumCount; index ++){

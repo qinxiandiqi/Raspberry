@@ -3,49 +3,49 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TRUE = 1
-#define FALSE = 0
+#define TRUE 1
+#define FALSE 0
 
-#define HIGH_MODE = 1;
-#define LOW_MODE = 0;
+#define HIGH_MODE 1
+#define LOW_MODE 0
 
-#define numOne = 0;
-#define numTwo = 1;
-#define numThree = 2;
-#define numFour = 3;
-#define numFive = 4;
-#define numSix = 5;
+#define numOne 0
+#define numTwo 1
+#define numThree 2
+#define numFour 3
+#define numFive 4
+#define numSix 5
 
-#define pinA = 2;
-#define pinB = 3;
-#define pinC = 4;
-#define pinD = 17;
-#define pinE = 27;
-#define pinF = 22;
-#define pinG = 10;
-#define pinDF = 9;
+#define pinA 2
+#define pinB 3
+#define pinC 4
+#define pinD 17
+#define pinE 27
+#define pinF 22
+#define pinG 10
+#define pinDF 9
 
-#define pinNumOne = 14;
-#define pinNumTwo = 15;
-#define pinNumThree = 18;
-#define pinNumFour = 23;
-#define pinNumFive = 24;
-#define pinNumSix = 25;
+#define pinNumOne 14
+#define pinNumTwo 15
+#define pinNumThree 18
+#define pinNumFour 23
+#define pinNumFive 24
+#define pinNumSix 25
 
-#define arrayNumCount = 6;
-#define arrayLedCount = 8;
+#define arrayNumCount 6
+#define arrayLedCount 8
 
-int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
-int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
+const int arrayNums[arrayNumCount] = {pinNumOne, pinNumTwo, pinNumThree, pinNumFour, pinNumFive, pinNumSix};
+const int arrayLeds[arrayLedCount] = {pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinDF};
 
 int hour, min, sec;
 time_t currentTimeSec;
 struct tm * currentTime;
-int index = 0;
+int position = 0;
 
 void lightNumber(int light, int number){
-    for(index = 0; index < arrayNumCount; index ++){
-        digitalWrite(arrayNums[index], LOW_MODE);
+    for(position = 0; position < arrayNumCount; position ++){
+        digitalWrite(arrayNums[position], LOW_MODE);
     }
     digitalWrite(pinDF, HIGH_MODE);
     switch (number) {
@@ -153,11 +153,11 @@ int main(){
         return 1;
     }
     printf("init all pin mode...\n");
-    for(index = 0; index < arrayNumCount; index ++){
-        pinMode(arrayNums[index], OUTPUT);
+    for(position = 0; position < arrayNumCount; position ++){
+        pinMode(arrayNums[position], OUTPUT);
     }
-    for(index = 0; index < arrayLedCount; index ++){
-        pinMode(arrayLeds[index], OUTPUT);
+    for(position = 0; position < arrayLedCount; position ++){
+        pinMode(arrayLeds[position], OUTPUT);
     }
 
     printf("start timer...\n");
